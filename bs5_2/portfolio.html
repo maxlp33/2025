@@ -60,35 +60,56 @@
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
         }
         
+        .nav-link {
+            color: #ffffff !important;
+            background-color: transparent !important;
+            margin: 0 5px;
+            border-radius: 4px;
+            padding: 8px 16px !important;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
         .nav-link:hover {
             color: #f8d7da !important;
             background-color: rgba(255, 255, 255, 0.1) !important;
         }
         
         .nav-link.active {
-            background-color: #6d1e2b !important;
-            color: #ff6b7a !important;
-        }
-        
-        .nav-link {
-            color: #ff6b7a !important;
-            background-color: #c82333 !important;
-            margin: 2px;
-            border-radius: 4px;
-            padding: 8px 16px !important;
+            background-color: rgba(255, 255, 255, 0.2) !important;
+            color: #fff !important;
         }
         
         /* Carousel custom styling */
+        .carousel {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        
+        .carousel-item {
+            position: relative;
+        }
+        
         .carousel-item img {
             height: 400px;
             object-fit: cover;
             width: 100%;
+            display: block;
         }
         
         .carousel-caption {
             background: rgba(0, 0, 0, 0.7);
             border-radius: 8px;
             padding: 15px;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+        }
+        
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 5%;
         }
         
         .carousel-control-prev-icon,
@@ -96,6 +117,25 @@
             background-color: #8b0000;
             border-radius: 50%;
             padding: 20px;
+            width: 40px;
+            height: 40px;
+        }
+        
+        .carousel-indicators {
+            bottom: 10px;
+        }
+        
+        .carousel-indicators button {
+            background-color: #8b0000 !important;
+            border: 2px solid white !important;
+            width: 12px !important;
+            height: 12px !important;
+            border-radius: 50% !important;
+        }
+        
+        .carousel-indicators button.active {
+            background-color: white !important;
+            border: 2px solid #8b0000 !important;
         }
         
         /* 響應式設計 */
@@ -135,22 +175,22 @@
     <div class="main-container">
         <nav class="navbar navbar-expand-lg navbar-dark main-navbar">
             <div class="container-fluid">
-                <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" title="Red Lantern home" href="bs5_2.html" style="font-weight: bold;">Home</a>
+                            <a class="nav-link" title="Red Lantern home" href="bs5_2.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" title="Design services" href="services.html" style="font-weight: bold;">Services</a>
+                            <a class="nav-link" title="Design services" href="services.html">Services</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" title="Our work" href="portfolio.html" style="font-weight: bold;">Portfolio</a>
+                            <a class="nav-link active" aria-current="page" title="Our work" href="portfolio.html">Portfolio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" title="Contact Red Lantern" href="contact.html" style="font-weight: bold;">Contact</a>
+                            <a class="nav-link" title="Contact Red Lantern" href="contact.html">Contact</a>
                         </li>
                     </ul>
                 </div>
