@@ -9,13 +9,17 @@ The font size here is set to 62.5% so that
 a little easier
 */
 body {
-	margin: 0 auto;
-	width: 800px;
+	margin: 0;
 	padding: 0;
-	background-image: linear-gradient(to bottom, #fd0909, #ff810b);
 	font-family: Helvetica, sans-serif;
 	font-size: 62.5%;
 	color: #333;
+	/* Square diamond pattern with diagonal cross lines rotated 45 degrees */
+	background: 
+		linear-gradient(45deg, transparent 45%, #8b0000 48%, #8b0000 52%, transparent 55%),
+		linear-gradient(-45deg, transparent 45%, #8b0000 48%, #8b0000 52%, transparent 55%);
+	background-size: 20px 20px;
+	background-color: #dc3545;
 }
 
 h1, h2, p, ul, li {
@@ -78,18 +82,14 @@ span.amp {
 	background: none;
 }
 
-/*
-Because the header content is outside the wrap <div>,
-we need to use the same "margin: 0 auto" trick to center
-the layout
-*/
-#mainContent {
-	clear: both;
-	margin: 0 auto;
-	padding: 10px;
-	width: 800px;
-	background: #fff;
-	border: 10px solid #5c0505;
+/* Main container with unified red border */
+.main-container {
+	max-width: 800px;
+	margin: 20px auto;
+	background: white;
+	border: 8px solid #8b0000;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
 #header img {

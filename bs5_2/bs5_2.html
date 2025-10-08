@@ -10,57 +10,147 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
      <link rel="stylesheet" href="css/style.css">
+     <style>
+        /* 移除重複的背景，統一由CSS控制 */
+        .main-container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            border: 8px solid #8b0000;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .navbar-toggler {
+            background-color: #dc3545 !important;
+            border: 2px solid #b02a37 !important;
+            padding: 8px 12px;
+        }
+        
+        .navbar-toggler:hover {
+            background-color: #c82333 !important;
+        }
+        
+        .navbar-toggler:focus {
+            background-color: #c82333 !important;
+            box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+        }
+        
+        .navbar-toggler[aria-expanded="true"] {
+            background-color: #c82333 !important;
+            border-color: #a02331 !important;
+        }
+        
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+        }
+        
+        .nav-link:hover {
+            color: #f8d7da !important;
+            background-color: rgba(255, 255, 255, 0.1) !important;
+        }
+        
+        .nav-link.active {
+            background-color: #6d1e2b !important;
+            color: #ff6b7a !important;
+        }
+        
+        .nav-link {
+            color: #ff6b7a !important;
+            background-color: #c82333 !important;
+        }
+        
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .navbar-nav {
+                width: 100% !important;
+                margin-top: 10px !important;
+            }
+            
+            .navbar-nav .nav-item {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .main-content-flex {
+                flex-direction: column !important;
+            }
+            
+            .main-content-flex > section {
+                min-width: auto !important;
+                width: 100% !important;
+            }
+        }
+     </style>
 </head>
 
 <body>
-    <header class="container">
-        <div class="row">
-            <h1 class="col-6"><img alt="Red Lantern logo" src="images/rl_logo.png" /></h1>
-            <ul id="nav" class="col-6">
-                <li><a class="active" title="Red Lantern home" href="index.html">Home</a></li>
-                <li><a title="Design services" href="services.html">Services</a></li>
-                <li><a title="Our work" href="portfolio.html">Portfolio</a></li>
-                <li><a title="Contact Red Lantern" href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-
+    <header style="text-align: center; padding: 20px; background-color: #4a0e0e;">
+        <img alt="Red Lantern logo" src="images/rl_logo.png" height="60">
     </header>
-    <article id="mainContent" class="container border border-3 border-danger">
-        <section id="titleBar" class="row">
-            <img src="images/tokyo.jpg" alt="tokyo building" class="col-12">
-            <h1 class="col-12">Red Lantern building unique interfaces <span class="amp">&amp;</span> user experience
-            </h1>
-
-        </section>
-        <div class="row">
-            <section id="sidebar" class="col-12 col-sm-6">
-                <h2>Our Work</h2>
-                <div class="row">
-                    <img src="images/markinjapan.jpg" alt="comp0" class="col-6">
-                    <img src="images/a2g.jpg" alt="comp1" class="col-6">
-                    <img src="images/foobar.jpg" alt="comp2" class="col-6">
-                    <img src="images/rpm.jpg" alt="comp3" class="col-6">
+    
+    <div class="main-container">
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #8b0000; margin: 0; padding: 10px 20px;">
+            <div style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+                <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto" style="width: 100%; justify-content: flex-end; margin: 0;">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" title="Red Lantern home" href="bs5_2.html" style="font-weight: bold;">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" title="Design services" href="services.html" style="font-weight: bold;">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" title="Our work" href="portfolio.html" style="font-weight: bold;">Portfolio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" title="Contact Red Lantern" href="contact.html" style="font-weight: bold;">Contact</a>
+                        </li>
+                    </ul>
                 </div>
+            </div>
+        </nav>
+        <article id="mainContent" style="padding: 20px; margin: 0; background-color: white;">
+            <section id="titleBar">
+                <img src="images/tokyo.jpg" alt="tokyo building" style="width: 100%; display: block;">
+                <h1>Red Lantern building unique interfaces <span class="amp">&amp;</span> user experience
+                </h1>
             </section>
+            
+            <div class="main-content-flex" style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
+                <section id="sidebar" style="flex: 1; min-width: 300px;">
+                    <h2>Our Work</h2>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                        <img src="images/markinjapan.jpg" alt="comp0" style="width: 100%; height: auto;">
+                        <img src="images/a2g.jpg" alt="comp1" style="width: 100%; height: auto;">
+                        <img src="images/foobar.jpg" alt="comp2" style="width: 100%; height: auto;">
+                        <img src="images/rpm.jpg" alt="comp3" style="width: 100%; height: auto;">
+                    </div>
+                </section>
 
-            <section id="content" class="col-12 col-sm-6">
-                <h2>Welcome to the New Red Lantern Design</h2>
-                <p>Red Lantern is a small web design and consulting firm specializing in standards-base
-                    Our goal is to build simple, beautiful webpages that make your information easy to </p>
-                <p>If you or your company is interested in working with us, please check out our portfolio
-                    work and contact us with your project details. We look forward to hearing from you
-                    on th web a little simpler and easier to find.</p>
-                <ul id="link-list">
-                    <li><a title="View our portfolio" href="#">View our full portfolio</a></li>
-                    <li><a title="Contact Red Lantern" href="#">Contact Red Lantern</a></li>
-                </ul>
-            </section>
-
-        </div>
-        <footer id="footer">
-            <p>Copyright &copy; Red Lantern Design, all right reserved</p>
-        </footer>
-    </article>
+                <section id="content" style="flex: 1; min-width: 300px;">
+                    <h2>Welcome to the New Red Lantern Design</h2>
+                    <p>Red Lantern is a small web design and consulting firm specializing in standards-base
+                        Our goal is to build simple, beautiful webpages that make your information easy to </p>
+                    <p>If you or your company is interested in working with us, please check out our portfolio
+                        work and contact us with your project details. We look forward to hearing from you
+                        on th web a little simpler and easier to find.</p>
+                    <ul id="link-list">
+                        <li><a title="View our portfolio" href="#">View our full portfolio</a></li>
+                        <li><a title="Contact Red Lantern" href="#">Contact Red Lantern</a></li>
+                    </ul>
+                </section>
+            </div>
+            
+            <footer id="footer" style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; text-align: center;">
+                <p>Copyright &copy; Red Lantern Design, all right reserved</p>
+            </footer>
+        </article>
+    </div>
 </body>
 
 </html>
