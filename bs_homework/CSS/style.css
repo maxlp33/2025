@@ -10,12 +10,106 @@
 }
 .hero {
   position: relative;
-  height: 100vh; /* 全螢幕高 */
-  background-image: url("images/eagle.png");
+  height: 60vh; /* 讓 banner 小一些，內容更突出 */
+  background-image: url("../images/cloud.png");
   background-size: cover;
-  background-position: center;
+  background-position: top center;
   background-repeat: no-repeat;
+  overflow: visible; /* 允許 eagle 延伸顯示 */
 }
+
+/* Hero 覆蓋層，讓文字更易讀 */
+.hero::before{
+  content: "";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.6) 100%);
+  z-index:1;
+}
+.hero .hero-content{ position:relative; z-index:2; }
+
+/* 使用 pseudo-element 將 eagle 作為 banner 底端的裝飾，避免蓋住文字 */
+.hero::after{
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  /* 放在最前面，蓋過 navbar 與內容 */
+  z-index: 2000;
+  pointer-events: none;
+  /* 讓 eagle 底部碰到 navbar 的上緣（向上移動一點，不那麼往下） */
+  /* moved up more: make bottom less negative to raise eagle */
+  bottom: calc( ( -1 * var(--navbar-height, 64px) / 6) + 6px );
+  /* scale down ~15% from previous sizes */
+  width: 57.8%; /* 68% * 0.85 */
+  max-width: 697px; /* ~820 * 0.85 */
+  height: 397px; /* ~468 * 0.85 */
+  background-image: url('../images/eagle.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+}
+
+@media (max-width: 1200px){
+  .hero::after{ width: 66.3%; height: 331px; max-width:544px; }
+}
+@media (max-width: 768px){
+  /* on small screens keep eagle visible but not too large */
+  .hero::after{ width: 71.4%; height: 238px; max-width:374px; bottom: 6px; }
+}
+
+/* Hero typography (simple and readable) */
+.hero .hero-content h1{ font-size:3.2rem; margin-bottom:0.25rem; color:#ffffff; }
+.hero .hero-content .lead{ font-size:1.05rem; color: #f0d37a; opacity:0.95; }
+
+
+/* Navbar customization */
+.navbar-custom{ border-bottom: 1px solid rgba(255,255,255,0.04); }
+.navbar-custom .navbar-brand span{ font-weight:700; letter-spacing:1px; }
+.navbar-custom .nav-link{ color: rgba(255,255,255,0.85); }
+.navbar-custom .nav-link:hover{ color: #d4af37; }
+
+/* 確保 navbar 以 Bootstrap collapse 為主；減少項目間距 */
+.navbar-nav{ gap: .25rem; }
+.navbar-nav .nav-item{ margin-right:0.2rem; }
+.dropdown-menu-end{ right:0; left:auto; }
+
+/* dropdown 視覺與 navbar 保持一致 */
+.dropdown-menu{ background: rgba(0,0,0,0) !important; border: none !important; box-shadow: none !important; }
+.dropdown-menu .dropdown-item{ color: #ddd; background: transparent; }
+.dropdown-menu .dropdown-item:hover{ background: rgba(212,175,55,0.08); color: #d4af37; }
+.navbar-brand{ font-weight:800; letter-spacing:1px; }
+
+/* 移除任何舊的 aside.music-box 影響（我們使用 offcanvas 取代 */
+.music-box{ display:none !important; }
+
+/* CTA 按鈕 */
+.btn-cta{ background: linear-gradient(90deg,#d4af37,#f0d37a); color:#0a0a0a; font-weight:700; }
+.btn-cta:hover{ filter:brightness(0.95); }
+.btn-cta.btn-sm{ padding:.35rem .6rem; font-size:.85rem; border-radius:.35rem; }
+
+/* middle gun image sizing (larger on desktop, responsive down) */
+.hero-gun{ width: 520px; max-width: 60%; height: auto; display:block; margin:0 auto; }
+@media (max-width: 1200px){
+  .hero-gun{ width: 420px; max-width: 60%; }
+}
+@media (max-width: 992px){
+  .hero-gun{ width: 280px; max-width: 70%; }
+}
+@media (max-width: 576px){
+  .hero-gun{ width: 160px; max-width: 80%; }
+}
+
+/* Footer */
+footer{ background: #060606; color:#bbb; padding:2.5rem 1rem; }
+footer p{ color:#888; margin-top:0.5rem; }
+
+/* Cards & logos */
+.logos img{ width:72px; opacity:0.9; transition: transform .2s, opacity .2s; }
+.logos img:hover{ transform:translateY(-4px); opacity:1; }
+
+/* Make hero images responsive */
+.big-img{ width:100%; height:auto; object-fit:cover; }
 .big-img {
   width: 100%;   
   height: auto;  
@@ -34,3 +128,57 @@
   border: none;
   box-shadow: none;
 }
+
+/* Small layout fix for content container used in navbar */
+.container{ max-width:1200px; }
+
+/* main page spacing to sit below the header/banner */
+.page-main{ padding: 3rem 1rem; display:flex; flex-direction:column; }
+
+/* eagle 放在 banner 底端但不蓋標題 */
+.hero-eagle{ width: 56%; max-width: 560px; transform: translateX(-50%); pointer-events:none; }
+
+/* 讓 eagle 可以從 banner 底部微微延伸到 main，但不蓋住標題 */
+.hero .hero-content{ z-index:4; }
+.hero-eagle{ z-index:1; bottom: calc(-1 * var(--navbar-height) / 2); }
+
+/* 讓整體頁面以 flex column 排版，main 自動填滿剩餘空間 */
+html, body { height: auto; }
+body{ margin:0; }
+/* 不再使用 flex layout 讓頁面可以正常捲動 */
+main.page-main{ display:block; }
+.page-main .hero-content{ padding-top:1rem; padding-bottom:1rem; }
+
+/* 放大中間內容並置中 - 提高約 30%（原來的基準值上調） */
+.hero-gun{ width: 78%; max-width: 1300px; height:auto; display:block; margin:0 auto; }
+@media (max-width: 1400px){ .hero-gun{ width: 65%; } }
+@media (max-width: 992px){ .hero-gun{ width: 88%; } }
+@media (max-width: 576px){ .hero-gun{ width: 92%; } }
+
+/* 讓 content 區域至少填滿視窗剩餘空間（header 60vh + footer 120px 估計） */
+
+/* 確保 header 與 navbar 之間沒有縫隙 */
+header.hero{ margin:0; }
+.navbar{ margin-top:0; }
+
+/* 當 More 下拉開啟時，讓按鈕保持 hover 樣式 */
+.dropdown.show > .dropdown-toggle,
+.dropdown-toggle[aria-expanded="true"]{
+  background: rgba(212,175,55,0.12) !important;
+  color: #d4af37 !important;
+  border-radius: .5rem;
+}
+
+/* dropdown full button style: remove inner small box and make each item a full rounded button */
+.dropdown-menu{ background: transparent !important; box-shadow:none !important; padding:.5rem; }
+.dropdown-menu .dropdown-item{ background: rgba(20,20,20,0.9); margin: .25rem 0; border-radius:.5rem; padding:.6rem 1rem; display:block; width:100%; box-sizing:border-box; }
+.dropdown-menu .dropdown-item:hover, .dropdown-menu .dropdown-item:focus{ background: rgba(212,175,55,0.12); color:#d4af37; }
+
+/* Ensure the outer <li> inside the dropdown does not keep the navbar's li background/padding */
+.navbar .dropdown-menu li{ background: transparent !important; padding: 0 !important; border: none !important; }
+
+/* Also ensure links inside dropdown can't show default background from other rules */
+.navbar .dropdown-menu .dropdown-item{ background-clip: padding-box; }
+
+/* 內容區擴展到寬度，但保留左右 padding */
+.page-main .hero-content{ width: calc(100% - 96px); padding-left:48px; padding-right:48px; margin:0 auto; }
